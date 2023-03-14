@@ -10,6 +10,10 @@
 
 ![9dTKpRlhtF6CkSz](https://s2.loli.net/2023/03/14/9dTKpRlhtF6CkSz.jpg)
 
+### Prompt
+
+![eFd7bN5VwgDAkx4](https://s2.loli.net/2023/03/14/eFd7bN5VwgDAkx4.png)
+
 ## Requirements
 
 Database: postgreSQL + pgvector
