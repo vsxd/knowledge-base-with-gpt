@@ -1,0 +1,4 @@
+openai
+SQLAlchemy
+jsonlines
+pgvector
