@@ -6,11 +6,11 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 Base = declarative_base()
-SQL_URL = "postgresql://localhost:5432/test_vector"
+SQL_URL = "postgresql://localhost:5432/<YOUR_DB_NAME>"
 
 
 class EmbeddingEntity(Base):
-    __tablename__ = 'qadata'
+    __tablename__ = '<YOUR_TABLE_NAME>'
     id = Column(Integer, primary_key=True)
     text = Column(String)
     embedding = Column(Vector(1536))
