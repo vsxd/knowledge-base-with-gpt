@@ -38,7 +38,7 @@ def split_string(input_string: str) -> Generator[str, None, None]:
     yield input_string
 
 
-def md_files_to_string(dir_path: str) -> Generator[str, None, None]:
+def md_files_to_string(dir_path: str) -> Generator[Generator[str, None, None], None, None]:
     """
     此函数用于读取给定目录下所有的 .md 文件，并将其内容分成最大长度为 600 的字符串，逐一生成这些字符串。
     参数：
