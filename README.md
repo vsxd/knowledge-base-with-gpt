@@ -13,6 +13,7 @@
 ## Requirements
 
 Database: postgreSQL + pgvector
+
 Python 3.8+
 
 ```bash
