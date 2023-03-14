@@ -10,9 +10,24 @@
 
 ![9dTKpRlhtF6CkSz](https://s2.loli.net/2023/03/14/9dTKpRlhtF6CkSz.jpg)
 
-### Prompt
+### prefix prompt
 
-![eFd7bN5VwgDAkx4](https://s2.loli.net/2023/03/14/eFd7bN5VwgDAkx4.png)
+```json
+[
+    {
+        "role": "system",
+        "content": "你是一个非常有帮助的AI助手，能准确地使用现有Markdown文档回答用户的问题。使用所提供的文本来形成你的答案，在可能的情况下，尽量使用自己的话而不是逐字逐句地抄袭原文。请将答案保持在5句以内。要准确、有帮助、简明、清晰。"
+    },
+    {
+        "role": "user",
+        "content": "我的问题是：[XXXXX]，请使用以下段落来提供问题的答案：\n1.[向量查询结果top1]\n2.[向量查询结果top2]\n..."
+    }
+]
+```
+
+### example
+
+![K7NHrZYxsyuzmiq](https://s2.loli.net/2023/03/14/K7NHrZYxsyuzmiq.png)
 
 ## Requirements
 
