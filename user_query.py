@@ -51,7 +51,7 @@ def completion(query: str, context: list[str]) -> str:
             {'role': 'user', 'content': f'我的问题是：{query}，请使用以下段落来提供问题的答案：\n{text}'},
         ],
     )
-    print(f"使用的tokens：{response.usage.total_tokens}")
+    print(f"使用的tokens: {response.usage.total_tokens}")
     return response.choices[0].message.content
 
 
@@ -67,7 +67,7 @@ def user_query_loop() -> None:
             break
         _, embedding = create_embedding(query)
         texts = storage.get_texts(embedding, limit)
-        print(f"已找到相关片段数量：{len(texts)}")
+        print(f"已找到相关片段: {len(texts)}")
 
         answer = completion(query, texts)
         print(">> Answer:")
