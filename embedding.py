@@ -1,3 +1,6 @@
+"""
+利用openai的embedding api生成词向量
+"""
 import openai
 import os
 from typing import *

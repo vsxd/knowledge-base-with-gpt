@@ -1,13 +1,16 @@
+"""
+PostgreSQL + pgvector实现向量数据库
+"""
 from pgvector.sqlalchemy import Vector
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 Base = declarative_base()
-SQL_URL = "postgresql://localhost:5432/<YOUR_DB_NAME>"
+SQL_URL = "postgresql://localhost:5432/test_vector"
 
 
 class EmbeddingEntity(Base):
-    __tablename__ = '<YOUR TABLE NAME>'
+    __tablename__ = 'qadata'
     id = Column(Integer, primary_key=True)
     text = Column(String)
     embedding = Column(Vector(1536))

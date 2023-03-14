@@ -1,3 +1,6 @@
+"""
+命令行方式的用户提问搜索
+"""
 import openai
 import os
 from embedding import create_embedding
@@ -59,7 +62,7 @@ def user_query_loop() -> None:
     storage = Storage()
     limit = 10
     while True:
-        query = input("请输入问题：\n>")
+        query = input("请输入问题: \n> ")
         if query == "quit":
             break
         _, embedding = create_embedding(query)
