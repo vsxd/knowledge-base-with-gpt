@@ -60,13 +60,14 @@ def user_query_loop() -> None:
     Loop for user queries.
     """
     storage = Storage()
-    limit = 10
+    limit = 35
     while True:
         query = input("请输入问题: \n> ")
         if query == "quit":
             break
         _, embedding = create_embedding(query)
         texts = storage.get_texts(embedding, limit)
+        texts = list(set(texts)) # drop duplicated texts
         print(f"已找到相关片段: {len(texts)}")
 
         answer = completion(query, texts)

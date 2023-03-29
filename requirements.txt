@@ -2,3 +2,4 @@ openai
 SQLAlchemy
 pgvector
 psycopg2
+openpyxl
