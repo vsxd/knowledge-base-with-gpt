@@ -48,7 +48,7 @@ def completion(query: str, context: list[str]) -> str:
              'content': '''你是一个非常有帮助的AI助手，能准确地使用现有文档回答用户的问题。
              使用所提供的文本来形成你的答案，在可能的情况下，尽量使用自己的话而不是逐字逐句地抄袭原文。
              要准确、有帮助、简明、清晰。'''},
-            {'role': 'user', 'content': f'我的问题是：{query}，请使用以下段落来提供问题的答案：\n{text}'},
+            {'role': 'user', 'content': f'我的问题是：{query}，请使用以下的知识库内容来提供问题的答案：\n{text}'},
         ],
     )
     print(f"使用的tokens: {response.usage.total_tokens}")
@@ -60,7 +60,7 @@ def user_query_loop() -> None:
     Loop for user queries.
     """
     storage = Storage()
-    limit = 35
+    limit = 40
     while True:
         query = input("请输入问题: \n> ")
         if query == "quit":
