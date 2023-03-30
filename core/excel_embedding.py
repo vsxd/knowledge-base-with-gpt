@@ -1,6 +1,6 @@
 import os
-from embedding import create_embedding
-from vector_db import Storage
+from core.embedding import create_embedding
+from core.vector_db import Storage
 
 import openpyxl
 

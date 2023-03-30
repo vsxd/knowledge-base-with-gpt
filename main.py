@@ -1,5 +1,5 @@
-from content_embedding import content_to_db
-from user_query import user_query_loop
+from db_maintenance.content_embedding import content_to_db
+from db_maintenance.user_query import user_query_loop
 
 def main() -> None:
     """

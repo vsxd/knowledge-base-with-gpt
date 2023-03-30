@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+  <title>QA Bot</title>
+  <link
+    rel="shortcut icon"
+    href="{{ url_for('static', filename='chatbot.png') }}"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+</head>
+
+<body>
+  <img src="{{ url_for('static', filename='chatbot.png') }}" class="icon" />
+  <h3>QA Bot</h3>
+  <form action="/" method="post">
+    <input type="text" name="question" placeholder="提问" required />
+    <input type="submit" value="得到回答" />
+  </form>
+  {% if result %}
+  <div class="result">{{ result }}</div>
+  {% endif %}
+</body>

@@ -3,3 +3,5 @@ SQLAlchemy
 pgvector
 psycopg2
 openpyxl
+flask
+Jinja2

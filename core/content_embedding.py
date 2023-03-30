@@ -4,8 +4,8 @@
 
 import os
 from typing import Generator
-from embedding import create_embedding
-from vector_db import Storage
+from core.embedding import create_embedding
+from core.vector_db import Storage
 
 
 def walk_mds(top: str) -> Generator[str, None, None]:

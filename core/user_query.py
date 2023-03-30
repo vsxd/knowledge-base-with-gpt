@@ -3,8 +3,8 @@
 """
 import openai
 import os
-from embedding import create_embedding
-from vector_db import Storage
+from core.embedding import create_embedding
+from core.vector_db import Storage
 
 def limit_context_length(context, max_length=3000):
     """
@@ -60,20 +60,29 @@ def user_query_loop() -> None:
     Loop for user queries.
     """
     storage = Storage()
-    limit = 40
+
     while True:
         query = input("请输入问题: \n> ")
         if query == "quit":
             break
-        _, embedding = create_embedding(query)
-        texts = storage.get_texts(embedding, limit)
-        texts = list(set(texts)) # drop duplicated texts
-        print(f"已找到相关片段: {len(texts)}")
-
-        answer = completion(query, texts)
+        answer = get_answer(storage, query)
         print(">> Answer:")
         print(answer.strip())
         print("=====================================")
+
+
+def get_answer(storage: Storage, query: str) -> str:
+    """
+    Embedding user question and get query answer
+    """
+    limit = 40
+    _, embedding = create_embedding(query)
+    texts = storage.get_texts(embedding, limit)
+    texts = list(set(texts)) # drop duplicated texts
+    print(f"已找到相关片段: {len(texts)}")
+
+    answer = completion(query, texts)
+    return answer
 
 
 if __name__ == '__main__':
