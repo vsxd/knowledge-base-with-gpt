@@ -45,10 +45,10 @@ def completion(query: str, context: list[str]) -> str:
         model="gpt-3.5-turbo",
         messages=[
             {'role': 'system',
-             'content': '''你是一个非常有帮助的AI助手，能准确地使用现有文档回答用户的问题。
-             使用所提供的文本来形成你的答案，在可能的情况下，尽量使用自己的话而不是逐字逐句地抄袭原文。
-             要准确、有帮助、简明、清晰。'''},
-            {'role': 'user', 'content': f'我的问题是：{query}，请使用以下段落来提供问题的答案：\n{text}'},
+             'content': '''我是一个非常有帮助的QA机器人，能准确地使用现有文档回答用户的问题。
+             我可以使用所提供的文本来形成我的答案，在可能的情况下，尽量使用自己的话而不是逐字逐句地抄袭原文。
+             我的回答是准确、有帮助、简明、清晰的。'''},
+            {'role': 'user', 'content': f'我的问题是：{query}\n请使用以下的知识库内容来提供问题的答案：\n{text}'},
         ],
     )
     print(f"使用的tokens: {response.usage.total_tokens}")
