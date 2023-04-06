@@ -3,7 +3,7 @@ PostgreSQL + pgvector实现向量数据库
 """
 from pgvector.sqlalchemy import Vector
 from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.orm import scoped_session, sessionmaker, declarative_base
 
 Base = declarative_base()
 SQL_URL = "postgresql://localhost:5432/postgres"
@@ -23,7 +23,7 @@ class Storage:
         self._postgresql = SQL_URL
         self._engine = create_engine(self._postgresql)
         Base.metadata.create_all(self._engine)
-        Session = sessionmaker(bind=self._engine)
+        Session = scoped_session(sessionmaker(bind=self._engine))
         self._session = Session()
 
     def add(self, text: str, embedding: list[float]):

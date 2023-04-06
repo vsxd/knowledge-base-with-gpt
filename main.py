@@ -1,15 +1,15 @@
-from db_maintenance.content_embedding import content_to_db
-from db_maintenance.user_query import user_query_loop
+from core.excel_embedding import content_to_db
+from core.user_query import user_query_loop
 
 def main() -> None:
     """
     main
     """
     # 将数据向量化后存入数据库
-    # content_to_db("<Markdown files dir>")
+    # content_to_db('/Users/abcd/Desktop/Book1.xlsx')
     
     # 用户提问查询
-    user_query_loop()
+    # user_query_loop()
 
 if __name__ == '__main__':
     main()
