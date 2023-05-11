@@ -3,7 +3,7 @@
 """
 import openai
 import os
-from core.embedding_old import create_embedding
+from core.embedding import create_embedding
 from core.vector_db import Storage
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -80,7 +80,7 @@ def get_answer(storage: Storage, query: str) -> str:
     limit = 8
     _, embedding = create_embedding(query)
     texts = storage.get_texts(embedding, limit)
-    texts = list(set(texts)) # drop duplicated texts
+    texts = list(set(texts))  # drop duplicated texts
     print(f"已找到相关片段: {len(texts)}")
 
     answer = completion(query, texts)

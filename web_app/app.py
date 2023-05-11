@@ -16,7 +16,8 @@ def index():
     if request.method == "POST":
         user_question = request.form["question"]
         bot_answer = get_answer(storage, user_question)
-        return redirect(url_for("index", result=bot_answer))
+        return render_template("index.html", result=bot_answer,
+                               question=user_question)
 
     result = request.args.get("result")
-    return render_template("index.html", result=result)
+    return render_template("index.html", result=result, question="提问")

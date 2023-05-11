@@ -36,7 +36,7 @@ class Storage:
             data, auto_id=True
         )
 
-    def get_texts(self, embedding: list[float], top_k=5):
+    def get_texts(self, embedding: list[float], top_k=10):
         search_params = {
             "metric_type": "L2",
             "params": {"nprobe": 10}, "offset": 5
@@ -45,15 +45,21 @@ class Storage:
             data=[embedding],
             anns_field="embedding",
             param=search_params,
-            limit=10,
+            limit=top_k,
             # expr=None,
             # set the names of the fields you want to retrieve from the search result.
-            # output_fields=['text'],
-            # consistency_level="Bounded"
+            output_fields=['text', 'external_id'],
+            consistency_level="Bounded"
         )
-        print(results)
+        # print(results)
         print(results[0].ids)
-        return None
+        print(results[0].distances)
+        ret = []
+        for item in results[0]:
+            # print(item.entity.get('text')[:25])
+            ret.append(item.entity.get('text'))
+            # print(item.entity.get('external_id'))
+        return ret
 
     @classmethod
     def _create_collection(cls):
@@ -111,8 +117,10 @@ if __name__ == '__main__':
     print('0')
     # storage.add(1132132131, 'text', 111, [0.5]*768)
     print('1')
-    vec = [0.5]*768
-    vec[0] = 0.4
-    storage.get_texts(vec)
+
+    from text2vec import SentenceModel
+    m = SentenceModel()
+    vec = m.encode("静默活体检测怎么使用？")
+    storage.get_texts(vec, top_k=20)
     print('2')
     del storage
