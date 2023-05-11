@@ -3,6 +3,7 @@
 """
 
 import os
+import re
 from typing import Generator
 from core.embedding import create_embedding
 from core.vector_db import Storage
@@ -51,7 +52,7 @@ def md_files_to_string(dir_path: str) -> Generator[Generator[str, None, None], N
             read_data = f.read()
             yield split_string(read_data)
 
-
+TAGS_REGEX = r"- (.+)"
 def content_to_db(docs_dir: str) -> None:
     """
     将指定目录中的md文件内容添加到数据库中。
@@ -59,9 +60,17 @@ def content_to_db(docs_dir: str) -> None:
     """
     storage = Storage()
     for str_list in md_files_to_string(docs_dir):
+        str_list = list(str_list)
+        tags = []
+        tags_match = re.findall(TAGS_REGEX, str_list[0])
+        if tags_match:
+            for tag_str in tags_match:
+                tags.append(tag_str)
+        tag = ",".join(tags[:3])
         for text in str_list:
             try:
-                _, vector = create_embedding(str(text))
+                content_str = tag+"\n"+str(text)
+                _, vector = create_embedding(content_str)
             except Exception as exce:
                 print(str(exce))
                 input("wait for command to retry")
