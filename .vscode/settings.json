@@ -1,0 +1,10 @@
+{
+    "python.linting.pylintEnabled": false,
+    "python.linting.mypyEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "python.formatting.provider": "none"
+}

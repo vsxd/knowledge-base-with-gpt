@@ -3,8 +3,10 @@
 """
 import openai
 import os
-from core.embedding import create_embedding
+from core.embedding_old import create_embedding
 from core.vector_db import Storage
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def limit_context_length(context, max_length=3000):
     """

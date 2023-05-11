@@ -5,7 +5,7 @@
 import os
 import re
 from typing import Generator
-from core.embedding import create_embedding
+from core.embedding_old import create_embedding
 from core.vector_db import Storage
 
 
@@ -53,7 +53,7 @@ def md_files_to_string(dir_path: str) -> Generator[Generator[str, None, None], N
             yield split_string(read_data)
 
 TAGS_REGEX = r"- (.+)"
-def content_to_db(docs_dir: str) -> None:
+def excel_to_db(docs_dir: str) -> None:
     """
     将指定目录中的md文件内容添加到数据库中。
     :param docs_dir: md文件所在目录
@@ -80,4 +80,4 @@ def content_to_db(docs_dir: str) -> None:
 
 
 if __name__ == '__main__':
-    content_to_db("/Users/abcd/Desktop/md-docs")
+    excel_to_db("/Users/abcd/Desktop/md-docs")

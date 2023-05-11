@@ -1,15 +1,17 @@
 """
-利用openai的embedding api生成词向量
+利用text2vec生成词向量
 """
-import openai
 import os
 from typing import *
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+from text2vec import SentenceModel
 
+m = SentenceModel()
 
 def create_embedding(text: str):
     """Create an embedding for the provided text."""
-    embedding = openai.Embedding.create(
-        model="text-embedding-ada-002", input=text)
-    return text, embedding.data[0].embedding
+    return text, m.encode(text)
+
+
+if __name__ == '__main__':
+    print(create_embedding('如何更换花呗绑定银行卡'))

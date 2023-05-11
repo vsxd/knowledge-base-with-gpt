@@ -16,8 +16,9 @@ def read_excel(excel_file: str):
         yield q_value, a_value  # read QA data
 
 
-def content_to_db(excel_file: str) -> None:
+def excel_to_db(excel_file: str) -> None:
     storage = Storage()
+    id_count = 1
     for q_value, a_value in read_excel(excel_file):
         try:
             _, vector = create_embedding(str(q_value))
@@ -25,9 +26,11 @@ def content_to_db(excel_file: str) -> None:
             print(str(exce))
             input("wait for command to retry")
             _, vector = create_embedding(str(q_value))
-        storage.add(a_value, vector)
+        storage.add(id_count, a_value, 0, vector)
+        id_count += 1
         print(f"> 完成插入text: [{a_value[0:10]}], embedding: {vector[0:3]}")
+    del storage
 
 
 if __name__ == '__main__':
-    content_to_db('/Users/abcd/Desktop/IM知识库.xlsx')
+    excel_to_db('/Users/abcd/Desktop/IM知识库.xlsx')
