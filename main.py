@@ -1,4 +1,4 @@
-from core.content_embedding import excel_to_db
+from core.content_embedding import md_to_db
 from core.excel_embedding import excel_to_db
 from core.user_query import user_query_loop
 

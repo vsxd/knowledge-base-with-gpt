@@ -14,4 +14,4 @@ def create_embedding(text: str):
 
 
 if __name__ == '__main__':
-    print(create_embedding('如何更换花呗绑定银行卡'))
+    print(create_embedding('如何更换花呗绑定银行卡')[:5])

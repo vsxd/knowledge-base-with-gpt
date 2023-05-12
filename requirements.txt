@@ -1,7 +1,10 @@
 openai
-SQLAlchemy
-pgvector
-psycopg2
+# SQLAlchemy
+# pgvector
+# psycopg2
 openpyxl
 flask
 Jinja2
+pymilvus
+# torch
+text2vec

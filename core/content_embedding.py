@@ -53,7 +53,7 @@ def md_files_to_string(dir_path: str) -> Generator[Generator[str, None, None], N
             yield split_string(read_data)
 
 TAGS_REGEX = r"- (.+)"
-def excel_to_db(docs_dir: str) -> None:
+def md_to_db(docs_dir: str) -> None:
     """
     将指定目录中的md文件内容添加到数据库中。
     :param docs_dir: md文件所在目录
@@ -80,4 +80,4 @@ def excel_to_db(docs_dir: str) -> None:
 
 
 if __name__ == '__main__':
-    excel_to_db("/Users/abcd/Desktop/md-docs")
+    md_to_db("/Users/abcd/Desktop/md-docs")
